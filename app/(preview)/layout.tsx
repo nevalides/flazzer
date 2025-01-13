@@ -7,9 +7,9 @@ import { Geist } from "next/font/google";
 const geist = Geist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ai-sdk-preview-pdf-support.vercel.app"),
-  title: "PDF Support Preview",
-  description: "Experimental preview of PDF support with the AI SDK",
+  // metadataBase: new URL("https://ai-sdk-preview-pdf-support.vercel.app"),
+  title: "Flazzer | Help You Memorize with Flash Cards!",
+  description: "Flash cards generator with AI Vercel SDK",
 };
 
 export default function RootLayout({
