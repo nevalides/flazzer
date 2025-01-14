@@ -14,14 +14,14 @@ export async function POST(req: Request) {
       {
         role: "system",
         content:
-          "You are a teacher. Your job is to take a document, and create a multiple choice test (with 4 questions) based on the content of the document. Each option should be roughly equal in length.",
+          "You are a teacher. Your job is to take a document, and create a set of flash cards (with 20 questions max) based on the content of the document. The length of questions and answers is limited to 15 words",
       },
       {
         role: "user",
         content: [
           {
             type: "text",
-            text: "Create a multiple choice test based on this document.",
+            text: "Create a set of flash cards based on this document.",
           },
           {
             type: "file",

@@ -16,13 +16,11 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import Quiz from "@/components/quiz";
-import { Link } from "@/components/ui/link";
 import NextLink from "next/link";
 import { generateQuizTitle } from "./actions";
 import { AnimatePresence, motion } from "framer-motion";
 import { GitIcon } from "@/components/icons";
-import { cn } from "@/lib/utils";
+import FlashSession from "@/components/flash-session";
 
 export default function ChatWithFiles() {
   const [files, setFiles] = useState<File[]>([]);
@@ -100,11 +98,11 @@ export default function ChatWithFiles() {
     setQuestions([]);
   };
 
-  const progress = partialQuestions ? (partialQuestions.length / 4) * 100 : 0;
+  const progress = partialQuestions ? (partialQuestions.length / 20) * 100 : 0;
 
-  if (questions.length === 4) {
+  if (questions.length === 20) {
     return (
-      <Quiz title={title ?? "Quiz"} questions={questions} clearPDF={clearPDF} />
+      <FlashSession title={title ?? "Quiz"} questions={questions} clearPDF={clearPDF} />
     );
   }
 
@@ -188,7 +186,7 @@ export default function ChatWithFiles() {
             <Button
               type="submit"
               className="w-full"
-              disabled={files.length === 0}
+              disabled={files.length === 0 || isLoading}
             >
               {isLoading ? (
                 <span className="flex items-center space-x-2">
