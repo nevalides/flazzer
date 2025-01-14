@@ -21,7 +21,8 @@ import { Link } from "@/components/ui/link";
 import NextLink from "next/link";
 import { generateQuizTitle } from "./actions";
 import { AnimatePresence, motion } from "framer-motion";
-import { VercelIcon, GitIcon } from "@/components/icons";
+import { GitIcon } from "@/components/icons";
+import { cn } from "@/lib/utils";
 
 export default function ChatWithFiles() {
   const [files, setFiles] = useState<File[]>([]);
@@ -192,10 +193,10 @@ export default function ChatWithFiles() {
               {isLoading ? (
                 <span className="flex items-center space-x-2">
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  <span>Generating Quiz...</span>
+                  <span>Generating Flash Cards...</span>
                 </span>
               ) : (
-                "Generate Quiz"
+                "Generate Flash Cards"
               )}
             </Button>
           </form>
@@ -218,7 +219,7 @@ export default function ChatWithFiles() {
                 />
                 <span className="text-muted-foreground text-center col-span-4 sm:col-span-2">
                   {partialQuestions
-                    ? `Generating question ${partialQuestions.length + 1} of 4`
+                    ? `Generating flash card ${partialQuestions.length + 1} of 20`
                     : "Analyzing PDF content"}
                 </span>
               </div>
@@ -226,6 +227,7 @@ export default function ChatWithFiles() {
           </CardFooter>
         )}
       </Card>
+      {/* <FlashCard number={1} question="What percentage of people may experience a significant mental health impact on their life?" answer="About 25% of people may experience significant mental health impacts affecting their thoughts, feelings, and actions in various aspects of life." /> */}
       <motion.div
         className="flex flex-row gap-4 items-center justify-between fixed bottom-6 text-xs "
         initial={{ y: 20, opacity: 0 }}
@@ -233,20 +235,11 @@ export default function ChatWithFiles() {
       >
         <NextLink
           target="_blank"
-          href="https://github.com/vercel-labs/ai-sdk-preview-pdf-support"
+          href="https://github.com/naufalpram/flazzer"
           className="flex flex-row gap-2 items-center border px-2 py-1.5 rounded-md hover:bg-zinc-100 dark:border-zinc-800 dark:hover:bg-zinc-800"
         >
           <GitIcon />
           View Source Code
-        </NextLink>
-
-        <NextLink
-          target="_blank"
-          href="https://vercel.com/templates/next.js/ai-quiz-generator"
-          className="flex flex-row gap-2 items-center bg-zinc-900 px-2 py-1.5 rounded-md text-zinc-50 hover:bg-zinc-950 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-50"
-        >
-          <VercelIcon size={14} />
-          Deploy with Vercel
         </NextLink>
       </motion.div>
     </div>
