@@ -40,7 +40,7 @@ export default function FlashStats({ confidentResponses, totalQuestions }: Flash
       <CardContent className="space-y-4 p-8">
         <div className="text-center">
           <p className="text-sm text-muted-foreground">
-            I am <br/><span className="text-4xl font-bold text-white">{confidence}%</span><br /> sure you're going to ace this topic
+            I am <br/><span className="text-4xl font-bold text-white">{confidence}%</span><br /> sure you{"\'"}re going to ace this topic
           </p>
         </div>
         <div className="h-2 w-full border rounded-lg flex overflow-hidden">
