@@ -18,7 +18,7 @@ import {
 import { Progress } from "@/components/ui/progress";
 import NextLink from "next/link";
 import { generateQuizTitle } from "./actions";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { GitIcon } from "@/components/icons";
 import FlashSession from "@/components/flash-session";
 

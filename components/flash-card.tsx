@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { cn } from "@/lib/utils";
+import { motion } from "motion/react";
 
 type FlashCardProps = {
     number: number,

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import {
@@ -73,6 +73,18 @@ export default function FlashSession({
 
   const currentQuestion = questions[currentQuestionIndex];
 
+  const answerShoutVariant = {
+    hidden: {
+      scale: 0, x: 0, y: 0, rotate: 0
+    },
+    visibleRight: {
+      scale: 1, x: 15, y: -30, rotate: 6
+    },
+    visibleLeft: {
+      scale: 1, x: -15, y: -30, rotate: -6
+    }
+  }
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <main className="container mx-auto px-4 py-12 max-w-4xl">
@@ -115,8 +127,8 @@ export default function FlashSession({
                         <ChevronRight className="ml-2 h-4 w-4" />
                       </Button>
                     </div>
-                    <h2 className={cn("absolute top-0 right-0 rotate-6 font-bold text-2xl transition-transform scale-0", prevAnswer === 'Got It' && "scale-100")}>You Got It!</h2>
-                    <h2 className={cn("absolute top-0 left-0 -rotate-6 font-bold text-2xl transition-transform scale-0", prevAnswer === 'Study Again' && "scale-100")}>Study Again!</h2>
+                    <motion.h2 layout variants={answerShoutVariant} initial='hidden' animate={prevAnswer === 'Got It' ? 'visibleRight' : 'hidden'} transition={{ easings: ['easeInOut'] }} className={cn("absolute top-0 right-0 font-bold text-2xl")}>You Got It!</motion.h2>
+                    <motion.h2 layout variants={answerShoutVariant} initial='hidden' animate={prevAnswer === 'Study Again' ? 'visibleLeft' : 'hidden'} transition={{ easings: ['easeInOut'] }} className={cn("absolute top-0 left-0 font-bold text-2xl")}>Study Again!</motion.h2>
                   </div>
                 ) : (
                   <div className="space-y-8">
