@@ -29,6 +29,7 @@ export default function FlashSession({
   const [confidentResponses, setConfidentResponses] = useState<string[]>(
     Array(questions.length).fill(null),
   );
+  const [hoverAnswer, setHover] = useState<'Got It' | 'Study Again' | 'Idle'>('Idle');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [progress, setProgress] = useState(0);
 
@@ -107,12 +108,14 @@ export default function FlashSession({
                 {!isSubmitted ? (
                   <div className="space-y-20 relative">
                     <div className={cn("flash-cards-container w-full h-full flex justify-center items-center transition-transform")}>
-                        <FlashCard number={currentQuestionIndex + 1} question={currentQuestion.question} answer={currentQuestion.answer}  />
+                        <FlashCard number={currentQuestionIndex + 1} question={currentQuestion.question} answer={currentQuestion.answer} hoverAnswer={hoverAnswer}  />
                     </div>
                     <div className="flex justify-between items-center pt-4">
                       <Button
                         onClick={() => handleSwipeCard('Study Again')}
                         variant="ghost"
+                        onMouseEnter={() => setHover('Study Again')}
+                        onMouseLeave={() => setHover('Idle')}
                       >
                         <ChevronLeft className="mr-2 h-4 w-4" /> Study Again
                       </Button>
@@ -122,6 +125,8 @@ export default function FlashSession({
                       <Button
                         onClick={() => handleSwipeCard('Got It')}
                         variant="ghost"
+                        onMouseEnter={() => setHover('Got It')}
+                        onMouseLeave={() => setHover('Idle')}
                       >
                         Got It
                         <ChevronRight className="ml-2 h-4 w-4" />
